@@ -41,6 +41,34 @@ cargo run -- 5432 6379
 cargo run -- --all
 ```
 
+## 시스템 설치
+
+프로젝트를 로컬 시스템 명령어로 설치하려면 아래를 사용합니다.
+
+```bash
+cd {.../whichport}
+cargo install --path .
+```
+
+설치 확인:
+
+```bash
+whichport --help
+```
+
+기본 설치 경로:
+
+- `~/.cargo/bin/whichport`
+
+`whichport` 명령이 인식되지 않으면 `PATH`에 Cargo 바이너리 경로를 추가하세요.
+
+macOS + zsh 예시:
+
+```bash
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
 ## CLI 사용법
 
 ```text
@@ -181,4 +209,3 @@ cargo test
 - `failed to run lsof`: `lsof`가 설치되어 있는지 확인
 - Linux에서 `ss failed ...`: 권한/환경 문제일 수 있으며, 자동으로 `lsof` 폴백 시도
 - `invalid port`: 포트 값이 숫자 범위를 벗어났는지 확인
-
