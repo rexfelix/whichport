@@ -1,3 +1,6 @@
 /target
 rules/
 .DS_Store
+report/
+.idea/
+
