@@ -23,27 +23,11 @@
   1. `ss -lntpH`
   2. 실패하면 `lsof -nP -iTCP -sTCP:LISTEN -FpcLnTu` 폴백
 
-## 빠른 시작
+## 설치
 
-### 1) 빌드
+### 시스템 설치 (권장)
 
-```bash
-cargo build
-```
-
-### 2) 실행
-
-```bash
-# 포트 지정 조회
-cargo run -- 5432 6379
-
-# 전체 리스닝 포트 조회
-cargo run -- --all
-```
-
-## 시스템 설치
-
-프로젝트를 로컬 시스템 명령어로 설치하려면 아래를 사용합니다.
+프로젝트를 로컬 시스템 명령어로 설치:
 
 ```bash
 cd {.../whichport}
@@ -53,12 +37,10 @@ cargo install --path .
 설치 확인:
 
 ```bash
-whichport --help
+whichport --version
 ```
 
-기본 설치 경로:
-
-- `~/.cargo/bin/whichport`
+기본 설치 경로: `~/.cargo/bin/whichport`
 
 `whichport` 명령이 인식되지 않으면 `PATH`에 Cargo 바이너리 경로를 추가하세요.
 
@@ -67,6 +49,19 @@ macOS + zsh 예시:
 ```bash
 echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
+```
+
+### 개발 모드 실행
+
+시스템 설치 없이 개발/테스트:
+
+```bash
+# 빌드
+cargo build
+
+# 실행
+cargo run -- 5432 6379
+cargo run -- --all
 ```
 
 ## CLI 사용법
@@ -91,12 +86,14 @@ whichport --help
 - 포트는 `1..=65535`만 허용됩니다.
 - `--all` 없이 포트를 주지 않으면 사용법과 함께 종료됩니다.
 
-## 출력 예시
+## 사용 예시
+
+설치 후에는 `whichport` 명령어를 직접 사용할 수 있습니다.
 
 ### 텍스트 출력
 
 ```bash
-cargo run -- 5432 65535 --verbose
+whichport 5432 65535 --verbose
 ```
 
 예시 결과:
@@ -118,7 +115,7 @@ port 65535: not listening
 ### JSON 출력 (포트 지정)
 
 ```bash
-cargo run -- --json 5432 65535
+whichport --json 5432 65535
 ```
 
 예시 구조:
@@ -160,10 +157,20 @@ cargo run -- --json 5432 65535
 ### JSON 출력 (전체)
 
 ```bash
-cargo run -- --json --all
+whichport --json --all
 ```
 
 `mode`가 `"all"`이고, `results`는 리스너 배열입니다.
+
+### 개발 모드에서 실행
+
+시스템 설치 없이 `cargo run`으로도 사용 가능합니다:
+
+```bash
+cargo run -- 5432 6379
+cargo run -- --all --verbose
+cargo run -- --json --all
+```
 
 ## JSON 필드 설명
 
