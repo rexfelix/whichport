@@ -74,6 +74,8 @@ source ~/.zshrc
 ```text
 whichport <port...> [--json] [--verbose]
 whichport --all [--json] [--verbose]
+whichport --version
+whichport --help
 ```
 
 옵션:
@@ -82,12 +84,12 @@ whichport --all [--json] [--verbose]
 - `--json`: JSON 형식 출력
 - `--verbose`: 텍스트 출력에 수집 메타데이터 추가
 - `-h`, `--help`: 사용법 출력
+- `-V`, `--version`: 버전 정보 출력
 
 주의:
 
 - 포트는 `1..=65535`만 허용됩니다.
 - `--all` 없이 포트를 주지 않으면 사용법과 함께 종료됩니다.
-- 현재 구현에서 `--help`는 사용법 출력 후 종료 코드 `1`로 종료됩니다.
 
 ## 출력 예시
 

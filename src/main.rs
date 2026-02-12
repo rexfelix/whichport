@@ -8,6 +8,7 @@ use thiserror::Error;
 /// CLI arguments structure using clap
 #[derive(Parser, Debug)]
 #[command(name = "whichport")]
+#[command(version)]
 #[command(about = "Query listening TCP ports and their processes", long_about = None)]
 struct Cli {
     /// Port numbers to query (1-65535)
